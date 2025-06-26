@@ -24,10 +24,12 @@ In Kubernetes:
 - It forwards external requests to multiple pods randomly or round-robin.
 
 Pods
+
 ![alt text](./resources/img/pods-poc-lb.png)
 
 Proof
 The curl-loop.bat script will exectue curl commands to the exposed URL for 10 times. As per below screenshot, each request/traffic are distributed across the replicas available.
+
 ![alt text](./resources/img/lb.png)
 
 ### Fault Tolerance
@@ -49,6 +51,7 @@ After executing the pod delete command to simulate a crashed pod, new pod named 
    ```bash
    kubectl delete pod <pod-name> -n poc-lb 
    ```
+
 ![alt text](./resources/img/ft.png)
 
 ### HPA (Horizontal Pod Autoscaler)
@@ -66,6 +69,7 @@ In Kubernetes:
 
 Proof
 1. Initial pods created and CPU usage
+
 ![alt text](./resources/img/init-pods.png)
 ![alt text](./resources/img/init-cpu-usage.png)
 
@@ -75,8 +79,10 @@ Proof
     ```
 
 3. CPU usage has reached 43% and has exceeded targeted CPU usage of 20%. 4 new pods are scaled up to help on the workloads.
+
 ![alt text](./resources/img/hpa.png)
 
 4. After stopping the load test, extra pods are deleted.
+
 ![alt text](./resources/img/hpa2.png)
 ![alt text](./resources/img/hpa3.png)
